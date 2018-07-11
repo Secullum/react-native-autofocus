@@ -1,12 +1,10 @@
-import React from 'react';
-import {
-  View
-} from 'react-native';
+import React from "react";
+import { View } from "react-native";
 
 export default class Form extends React.Component {
   static defaultProps = {
-    focusOn: ['TextInput']
-  }
+    focusOn: ["TextInput"]
+  };
 
   constructor() {
     super();
@@ -30,10 +28,14 @@ export default class Form extends React.Component {
         return child;
       }
 
+      if (child.props.onSubmitEditing) {
+        return child;
+      }
+
       let realIndex = index + recursiveIndex;
 
       return React.cloneElement(child, {
-        onEnter: () => {
+        onSubmitEditing: () => {
           for (i = ++realIndex; i < this.inputs.length; i++) {
             const input = this.inputs[i];
 
@@ -44,18 +46,14 @@ export default class Form extends React.Component {
             }
           }
         },
-        inputRef: ref => (this.inputs[realIndex] = ref),
+        inputRef: ref => (this.inputs[realIndex] = ref)
       });
     });
   }
 
   render() {
     let { children, focusOn, ...props } = this.props;
-	
-    return (
-      <View {...props}>
-        {this.renderChildren(children, focusOn)}
-      </View>
-    );
+
+    return <View {...props}>{this.renderChildren(children, focusOn)}</View>;
   }
 }
