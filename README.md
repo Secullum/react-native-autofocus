@@ -1,4 +1,5 @@
 # react-native-autofocus
+
 `npm install react-native-autofocus`
 
 Autofocus the next input field on enter in React Native.
@@ -12,6 +13,19 @@ export default () => (
   <Form>
     <TextInput placeholder="test" />
     <TextInput placeholder="test 2" />
+  </Form>
+)
+```
+
+or you can use your own text input:
+
+```js
+import { Form } from 'react-native-autofocus'
+
+export default () => (
+  <Form focusOn={['MyTextInput']}>
+    <MyTextInput placeholder="test" />
+    <MyTextInput placeholder="test 2" />
   </Form>
 )
 ```
