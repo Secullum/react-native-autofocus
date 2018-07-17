@@ -23,7 +23,7 @@ or you can use your own text input:
 import { Form } from 'react-native-autofocus'
 
 export default () => (
-  <Form focusOn={['MyTextInput']}>
+  <Form focusOn={[MyTextInput]}>
     <MyTextInput placeholder="test" />
     <MyTextInput placeholder="test 2" />
   </Form>
