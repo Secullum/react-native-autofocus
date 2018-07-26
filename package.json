@@ -4,7 +4,11 @@
   "description": "Move to next input field on enter in a form",
   "main": "index.js",
   "scripts": {
-    "test": " "
+    "test": " ",
+    "format": "prettier --write \"*.js\""
+  },
+  "devDependencies": {
+    "prettier": "^1.12.1"
   },
   "repository": {
     "type": "git",

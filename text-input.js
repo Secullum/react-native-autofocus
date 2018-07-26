@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextInput as Input } from 'react-native';
+import React from "react";
+import { TextInput as Input } from "react-native";
 
 const TextInput = ({ onSubmitEditing, onEnter, inputRef, ...props }) => (
   <Input

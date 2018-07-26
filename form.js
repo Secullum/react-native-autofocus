@@ -14,6 +14,7 @@ export default class Form extends React.Component {
   renderChildren(children, focusOn) {
     //Counter is reset so it does not have duplicate components
     this.count = 0;
+
     return React.Children.map(children, (child, index) => {
       if (!child) {
         return;
@@ -38,7 +39,7 @@ export default class Form extends React.Component {
         return child;
       }
 
-      let realIndex = this.count;
+      const realIndex = this.count;
 
       this.count++;
 
