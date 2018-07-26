@@ -11,7 +11,9 @@ export default class Form extends React.Component {
     this.inputs = [];
   }
 
-  renderChildren(children, focusOn, recursiveIndex = 0) {
+  renderChildren(children, focusOn) {
+    //Counter is reset so it does not have duplicate components
+    this.count = 0;
     return React.Children.map(children, (child, index) => {
       if (!child) {
         return;
@@ -23,8 +25,8 @@ export default class Form extends React.Component {
           children: this.renderChildren(child.props.children, index)
         });
       }
-	  
-	  if (!focusOn.some(input => input === child.type)) {
+
+      if (!focusOn.some(input => input === child.type)) {
         return child;
       }
 
@@ -32,20 +34,21 @@ export default class Form extends React.Component {
         return child;
       }
 
-      let realIndex = index + recursiveIndex;
-		
+      if (!child.props.editable && child.props.hasOwnProperty("editable")) {
+        return child;
+      }
+
+      let realIndex = this.count;
+
+      this.count++;
+
       return React.cloneElement(child, {
         onSubmitEditing: () => {
-          for (i = ++realIndex; i < this.inputs.length; i++) {
-            const input = this.inputs[i];
-
-            if (input && input.props.editable) {
-              input.focus();
-
-              return;
-            }
-          }
+          this.inputs[realIndex + 1]
+            ? this.inputs[realIndex + 1].focus()
+            : null;
         },
+
         inputRef: ref => (this.inputs[realIndex] = ref)
       });
     });
