@@ -1,5 +1,5 @@
-import React from "react";
-import { View, TextInput } from "react-native";
+import React from 'react';
+import { View, TextInput } from 'react-native';
 
 export default class Form extends React.Component {
   static defaultProps = {
@@ -20,10 +20,10 @@ export default class Form extends React.Component {
         return;
       }
 
-      if (child.props.children && child.props.children.props) {
+      if (child.props.children) {
         return React.cloneElement(child, {
           ...child.props,
-          children: this.renderChildren(child.props.children, index)
+          children: this.renderChildren(child.props.children, focusOn)
         });
       }
 
@@ -35,7 +35,7 @@ export default class Form extends React.Component {
         return child;
       }
 
-      if (!child.props.editable && child.props.hasOwnProperty("editable")) {
+      if (!child.props.editable && child.props.hasOwnProperty('editable')) {
         return child;
       }
 
