@@ -20,7 +20,7 @@ export default class Form extends React.Component {
         return;
       }
 
-      if (child.props.children) {
+      if (children.props && child.props.children) {
         return React.cloneElement(child, {
           ...child.props,
           children: this.renderChildren(child.props.children, focusOn)
