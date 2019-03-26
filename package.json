@@ -4,7 +4,6 @@
   "description": "Move to next input field on enter in a form",
   "main": "index.js",
   "scripts": {
-    "test": " ",
     "format": "prettier --write \"*.js\""
   },
   "devDependencies": {
