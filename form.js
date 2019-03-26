@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, TextInput } from 'react-native';
+import React from "react";
+import { TextInput, View } from "react-native";
 
 export default class Form extends React.Component {
   static defaultProps = {
@@ -12,7 +12,7 @@ export default class Form extends React.Component {
   }
 
   renderChildren(children, focusOn) {
-    //Counter is reset so it does not have duplicate components
+    // Counter is reset so it does not have duplicate components
     this.count = 0;
 
     return React.Children.map(children, (child, index) => {
@@ -20,7 +20,7 @@ export default class Form extends React.Component {
         return;
       }
 
-      if (children.props && child.props.children) {
+      if (child.props.children) {
         return React.cloneElement(child, {
           ...child.props,
           children: this.renderChildren(child.props.children, focusOn)
@@ -31,11 +31,7 @@ export default class Form extends React.Component {
         return child;
       }
 
-      if (child.props.onSubmitEditing) {
-        return child;
-      }
-
-      if (!child.props.editable && child.props.hasOwnProperty('editable')) {
+      if (!child.props.editable && child.props.hasOwnProperty("editable")) {
         return child;
       }
 
@@ -45,11 +41,12 @@ export default class Form extends React.Component {
 
       return React.cloneElement(child, {
         onSubmitEditing: () => {
-          this.inputs[realIndex + 1]
-            ? this.inputs[realIndex + 1].focus()
-            : null;
+          if (child.props.onSubmitEditing) {
+            child.props.onSubmitEditing();
+          } else if (this.inputs[realIndex + 1]) {
+            this.inputs[realIndex + 1].focus();
+          }
         },
-
         inputRef: ref => (this.inputs[realIndex] = ref)
       });
     });
