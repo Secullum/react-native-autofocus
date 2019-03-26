@@ -5,7 +5,7 @@
 // TypeScript Version: 2.7.2
 declare module 'react-native-autofocus' {
   interface FormProps {
-    focusOn?: any[];
+    focusOn?: Array<React.ComponentType>;
   }
 
   export declare class Form extends React.Component<FormProps> {}
