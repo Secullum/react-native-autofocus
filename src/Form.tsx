@@ -1,21 +1,23 @@
-import React from "react";
-import { TextInput, View } from "react-native";
+import * as React from 'react';
+import { TextInput, View, ViewProperties } from 'react-native';
 
-export default class Form extends React.Component {
+export interface FormProperties extends ViewProperties {
+  focusOn?: Array<React.ComponentType>;
+}
+
+export class Form extends React.Component<FormProperties> {
   static defaultProps = {
     focusOn: [TextInput]
   };
 
-  constructor() {
-    super();
-    this.inputs = [];
-  }
+  inputs: Array<any> = [];
+  count = 0;
 
-  renderChildren(children, focusOn) {
+  renderChildren(children: any, focusOn: Array<React.ComponentType>): any {
     // Counter is reset so it does not have duplicate components
     this.count = 0;
 
-    return React.Children.map(children, (child, index) => {
+    return React.Children.map(children, child => {
       if (!child) {
         return;
       }
@@ -31,7 +33,7 @@ export default class Form extends React.Component {
         return child;
       }
 
-      if (!child.props.editable && child.props.hasOwnProperty("editable")) {
+      if (!child.props.editable && child.props.hasOwnProperty('editable')) {
         return child;
       }
 
@@ -47,7 +49,7 @@ export default class Form extends React.Component {
             this.inputs[realIndex + 1].focus();
           }
         },
-        inputRef: ref => (this.inputs[realIndex] = ref)
+        inputRef: (ref: any) => (this.inputs[realIndex] = ref)
       });
     });
   }
@@ -55,6 +57,6 @@ export default class Form extends React.Component {
   render() {
     let { children, focusOn, ...props } = this.props;
 
-    return <View {...props}>{this.renderChildren(children, focusOn)}</View>;
+    return <View {...props}>{this.renderChildren(children, focusOn!)}</View>;
   }
 }
