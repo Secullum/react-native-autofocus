@@ -7,7 +7,7 @@ Autofocus the next input field on enter in React Native.
 Have you started with React Native, added a few inputs, and then realized you had to add refs just to focus onto the next input field? This little package solves that problem. Import your text input from and wrap them in a form:
 
 ```js
-import { Form } from 'react-native-autofocus'
+import { Form } from '@secullum/react-native-autofocus'
 
 export default () => (
   <Form focusOn={[MyTextInput]}>
