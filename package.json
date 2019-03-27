@@ -1,6 +1,6 @@
 {
-  "name": "react-native-autofocus",
-  "version": "0.0.7",
+  "name": "@secullum/react-native-autofocus",
+  "version": "0.1.0",
   "description": "Move to next input field on enter in a form",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zackify/react-native-autofocus.git"
+    "url": "git+https://github.com/Secullum/react-native-autofocus.git"
   },
   "keywords": [
     "react-native",
@@ -19,9 +19,5 @@
     "onenter"
   ],
   "author": "Zach Silveira",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zackify/react-native-autofocus/issues"
-  },
-  "homepage": "https://github.com/zackify/react-native-autofocus#readme"
+  "license": "ISC"
 }
