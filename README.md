@@ -1,6 +1,6 @@
 # react-native-autofocus
 
-`npm install react-native-autofocus`
+`npm install @secullum/react-native-autofocus`
 
 Autofocus the next input field on enter in React Native.
 
