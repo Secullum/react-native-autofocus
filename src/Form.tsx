@@ -18,7 +18,7 @@ export class Form extends React.Component<FormProperties> {
     this.count = 0;
 
     return React.Children.map(children, child => {
-      if (!child) {
+      if (!child  || !child.props) {
         return;
       }
 
